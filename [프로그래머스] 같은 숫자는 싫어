@@ -1,0 +1,32 @@
+import java.util.*;
+public class Solution {
+    ArrayList<Integer> al = new ArrayList();
+    public int[] solution(int []arr) {
+        ArrayList<Integer> al = new ArrayList();
+        for (int i = 0; i < arr.length; i++){
+            if(i+1 >= arr.length){
+                al.add(arr[i]);
+                break;
+            }
+            if (arr[i] != arr[i+1]){
+                al.add(arr[i]);
+            }
+        }
+        int[] answer = new int[al.size()];
+        int i = 0;
+        for(int n : al){
+            answer[i++] = n;
+        }
+        return answer;
+    }
+    public static void main(String argv[]){
+        //input: [1,1,3,3,0,1,1]
+        //output: [1,3,0,1]
+        Solution sl = new Solution();
+
+        int[] arr = {1, 1, 4, 3, 3, 0};
+        //기대값: {1,4,3,0}
+        System.out.println("answer.length = " + sl.solution(arr));
+    }
+}
+    
