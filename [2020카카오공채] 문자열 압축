@@ -1,0 +1,32 @@
+public class Solution {
+    public int solution(String s) {
+        int answer = 0;
+        int result = 0;
+        for (int i = 1; i <= (s.length()/2) + 1; i++){
+            result = getSplitedString(s, i, 1).length();
+            answer = i == 1? s.length() : result < answer ? result : answer;
+        }
+        return answer;
+    }
+
+
+    public String getSplitedString(String s, int n, int repeat){
+        if(s.length() < n){return s;}
+        String preString = s.substring(0, n);
+        String postString = s.substring(n, s.length());
+
+        if(!postString.startsWith(preString)){
+            if (repeat == 1){return preString + getSplitedString(postString, n, 1);}
+            return Integer.toString(repeat) + preString + getSplitedString(postString, n ,1);
+        }else{
+            return getSplitedString(postString, n, repeat +1);
+        }
+    }
+
+    public static void main(String argv[]){
+        Solution sl = new Solution();
+        //"ababcdcdababcdcd" 9
+        String s = "ababcdcdababcdcd";
+        System.out.println("answer.length = " + sl.solution(s));
+    }
+}
