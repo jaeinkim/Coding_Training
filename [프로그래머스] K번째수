@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+/*  L&L
+    1) ArrayList 오름차순 정렬 방법: Collections.sort(List list)
+ */
+/*
+기능 내용
+    자르고,
+    정렬하고,
+    몇번째 수를 3을 ArrayList로 놓기
+ */
+/*
+테스트케이스
+array	    [1, 5, 2, 6, 3, 7, 4]
+commands    [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
+return      [5, 6, 3]
+ */
+
+public class test2 {
+    public static void main(String[] argv){
+        test2 te = new test2();
+        int[] arr = {1, 5, 2, 6, 3, 7, 4};
+        int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+    }
+
+    public int[] solution(int[] array, int[][] commands) {
+        int tmp = 0;
+        ArrayList<Integer> al = new ArrayList();
+        for (int i = 0; i < commands.length; i++){
+            al.add(getSplitedNum(array, commands, i));
+        }
+        int[] answer = new int[al.size()];
+        int j =0 ;
+        for(int num : al){
+            answer[j++] = num;
+        }
+        return answer;
+    }
+
+    public int getSplitedNum(int[] arr, int[][] commands, int n){
+        ArrayList<Integer> al = new ArrayList();
+        for (int i = commands[n][0]-1; i < commands[n][1]; i++){
+            al.add(arr[i]);
+        }
+        Collections.sort(al);
+        return al.get(commands[n][2]-1);
+    }
+}
