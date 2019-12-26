@@ -1,0 +1,25 @@
+public class Solution {
+    public int[] solution(int []arr) {
+        ArrayList<Integer> al = new ArrayList();
+        int preNum = -1;
+        for(int num : arr){
+            if(preNum != num){
+                al.add(num);
+                preNum = num;
+            }
+        }
+        int[] answer = new int[al.size()];
+        int i = 0;
+        for(int num2 : al){
+            answer[i++] = num2;
+        }
+        return answer;
+    }
+    public static void main(String argv[]){
+        Solution sl = new Solution();
+
+        int[] arr = {1, 1, 4, 3, 3, 0};
+        //기대값: {1,4,3,0}
+        System.out.println("answer.length = " + sl.solution(arr));
+    }
+}
