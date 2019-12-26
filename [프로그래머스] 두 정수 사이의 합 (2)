@@ -1,0 +1,32 @@
+public class test {
+/*
+L&L
+1) 계산 시 피연산자들의 크기가 초과될 수 있으므로 타입 조정 유의 (int vs long)
+2) 피연산자가 정수형 타입인데 나눗셈을 하는 것에 대해 유의할 것!
+  - 수식에서 피연산자에 정수형 타입의 경우, 나눗셈을 할 때 소수점까지 계산하지 않음
+ */
+    public long solution(int a, int b) {
+        long answer = 0;
+        int max = Math.max(a, b);
+        System.out.println("max = " + max);
+        int min = Math.min(a, b);
+        System.out.println("min = " + min);
+        answer = sumAtoB(min, max);
+        //or
+        //answer = (max + min) * (max - min +1 ) / 2
+        return answer;
+    }
+
+    public long sumAtoB(long a, long b){
+        return  (2*a + (b-a))/2*(b-a+1); //(-20 + 9)/2*(10);
+                //(b - a + 1) * (a + b) / 2;
+
+    }
+
+    public static void main(String[] args) {
+        test te = new test();
+        System.out.println("-11/2 = " + (-11/2));
+        System.out.println(te.solution(-10, -1));
+
+    }
+}
