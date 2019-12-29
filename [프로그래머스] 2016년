@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Hashtable;
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        ArrayList<Integer> al = new ArrayList();
+
+        al.add(31); //1
+        al.add(29); //2
+        al.add(31); //3
+        al.add(30); //4
+        al.add(31); // 5
+        al.add(30); // 6
+        al.add(31);
+        al.add(31);
+        al.add(30);
+        al.add(31);
+        al.add(30);
+        al.add(31); //12
+        int tmp = a-1;
+        int tmp_sum = 0;
+
+        if(tmp !=0){
+            for (int i = 0; i < tmp; i++){
+                tmp_sum+=al.get(i);
+            }
+            tmp_sum += b;
+        }else{
+            tmp_sum = b;
+        }
+
+        System.out.println("tmp_sum = " + tmp_sum);
+        Hashtable<Integer, String> hb = new Hashtable();
+        hb.put(3, "SUN");
+        hb.put(4, "MON");
+        hb.put(5, "TUE");
+        hb.put(6, "WED");
+        hb.put(0, "THU");
+        hb.put(1, "FRI");
+        hb.put(2, "SAT");
+
+        return hb.get(tmp_sum%7);
+    }
+}
