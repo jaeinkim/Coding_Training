@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        int[] month = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        for(int i = 1 ; i < a; i++){
+            b += month[i-1];
+        }
+        Hashtable<Integer, String> hb = new Hashtable();
+        hb.put(3, "SUN");
+        hb.put(4, "MON");
+        hb.put(5, "TUE");
+        hb.put(6, "WED");
+        hb.put(0, "THU");
+        hb.put(1, "FRI");
+        hb.put(2, "SAT");
+
+        //System.out.println(hb.get(b%7) );
+        return hb.get(b%7);
+    }
+}
