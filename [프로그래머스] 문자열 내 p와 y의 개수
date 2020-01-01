@@ -1,0 +1,30 @@
+class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+        // 모두 UPPER CASE로 만들고
+        // 갯수가 P나 Y 둘 중 하나라도 0이면 TRUE 반환
+        //      갯수가 같으면 TRUE
+        //      갯수가 다르면 FALSE
+        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+        // StringTokenizer, StringBuilder 확인
+        //
+        String tmp = s.toUpperCase();
+        String[] arr = tmp.split("");
+        String P = "P";
+        int P_num = 0;
+        String Y = "Y";
+        int Y_num = 0;
+        for (String st: arr) {
+            if(P.equals(st)){P_num++;}
+            else if(Y.equals(st)){Y_num++;}
+        }
+        if (P_num == 0 && Y_num == 0){
+            return true;
+        }
+        if(P_num == Y_num){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
