@@ -1,0 +1,123 @@
+/*
+Stack
+    push? 스택의 가장 최상위(마지막)에 데이터를 저장
+    pop? 스택의 가장 최상위(마지막) 데이터 존재 여부를 확인 후, 있다면 추출 및 삭제. (삭제한다는 것이 포인트)
+    isEmpty? 스택의 요소(Element)가 비어있는지 확인. 비어있다면 1, 없다면 0.
+    isFull? 스택이 꽉 찼는지 확인. 찼다면 1, 아니라면 0.
+    clear? 스택에 있는 모든 데이터를 삭제하고 스택을 초기화함
+    peek? 스택의 가장 최상위에 있는 데이터를 추출함. 단, pop 메서드와 다르게 스택에서 삭제하지는 않음
+ */
+
+interface Stack {
+    public void push(char item);
+    public char pop();
+    public char peek();
+    public boolean isEmpty();
+    public boolean isFull();
+    public void clear();
+}
+
+class ArrayStack implements Stack{
+
+    private int top;
+    private int stackSize;
+    private char stackArr[];
+    public static void main(String[] argv){
+        int stackSize = 5;
+        ArrayStack arrStack = new ArrayStack(stackSize);
+
+        arrStack.push('A');
+        arrStack.printAllStack();
+
+        arrStack.push('B');
+        arrStack.printAllStack();
+
+        arrStack.push('C');
+        arrStack.printAllStack();;
+
+        arrStack.pop();
+        arrStack.printAllStack();
+
+        arrStack.pop();
+        arrStack.printAllStack();
+
+        arrStack.peek();
+        arrStack.printAllStack();
+
+        arrStack.clear();
+        arrStack.printAllStack();
+
+    }
+
+    public ArrayStack(int stackSize){
+        this.top = -1;                              // 스택 포인터 초기화
+        this.stackSize = stackSize;                 // 스택 사이즈 설정
+        this.stackArr = new char[this.stackSize];   // 스택 배열 생성
+    }
+
+    public void push(char item) {
+        if (isFull()){
+            System.out.println("Stack is full.");
+        }else{
+            this.stackArr[++top] = item;
+            System.out.println("Inserted item = " + item);
+        }
+    }
+
+    public char pop() {
+        if (isEmpty()){
+            System.out.println("Stack is empty.");
+            return 0;
+        }else{
+            System.out.println("Deleted item : " + stackArr[top] );
+            return this.stackArr[top--];
+        }
+    }
+
+    public char peek() {
+        if(isEmpty()){
+            System.out.println("Stack is empty.");
+            return 0;
+        }else{
+            System.out.println(stackArr[top]);
+            return this.stackArr[top];
+        }
+    }
+
+    public boolean isEmpty() {
+        if(top == -1){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFull() {
+        if(top+1 >= stackSize){
+            return true;
+        }
+        return false;
+    }
+
+    public void clear() {
+        if(isEmpty()){
+            System.out.println("Stack is Empty");
+        }else{
+            this.top = -1;
+            this.stackArr = new char[stackSize];
+            System.out.println("Stack is cleared");
+        }
+    }
+
+    public void printAllStack(){
+        if(isEmpty()){
+            System.out.println("Stack is empty.");
+        }else{
+            System.out.print("Stack Element: ");
+            for(int i = 0; i <= top; i++){
+                System.out.print(stackArr[i] + " ");
+            }
+            System.out.println();
+
+        }
+    }
+}
