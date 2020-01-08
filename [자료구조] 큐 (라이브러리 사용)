@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        Queue<Integer> q = new LinkedList<>();
+        for(int i = 0; i < N; i++){
+            String cmd = sc.next();
+            if(cmd.charAt(0) == 's'){
+                System.out.println(q.size());
+            }else if (cmd.charAt(0) == 'e'){
+                q.add(sc.nextInt());
+            }else if (cmd.charAt(0) == 'd'){
+                q.remove();
+            }else if (cmd.charAt(0) == 'f'){
+                System.out.println(q.peek());
+            }
+        }
+    }
+}
