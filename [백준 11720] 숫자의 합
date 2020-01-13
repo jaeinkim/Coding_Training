@@ -1,0 +1,16 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        char[] numbers = br.readLine().toCharArray();
+        int total = 0;
+        for(int i = 0; i < N; i++){
+            total += Integer.parseInt(String.valueOf(numbers[i]));
+        }
+    }
+}
