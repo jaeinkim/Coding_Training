@@ -1,0 +1,14 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] argv){
+        Scanner sc = new Scanner(System.in);
+        String n = sc.nextLine();
+        String line = sc.nextLine();
+        int sum = 0;
+        for(int i = 0; i < line.length(); i++){
+            sum = sum + line.charAt(i) - 48;
+        }
+        System.out.println(sum);
+    }
+}
