@@ -1,0 +1,17 @@
+/* 메모리 초과 뜸 또한 정확한 답이 아님 */
+import java.util.*;
+
+public class Main{
+    public static void main(String argv[]){
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int k = sc.nextInt();
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 1; i <= N; i++) {
+            sb.append(i);
+        }
+        System.out.println(sb.charAt(k-1) - 48);
+    }
+}
