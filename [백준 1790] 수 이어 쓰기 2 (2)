@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main2 {
+    public static void main(String argv[]) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int k = sc.nextInt();
+        /*
+        범위        개수        자리수     개수*자리수
+        1~9         9개          1           9
+        10~99       90개         2           180
+        100~999     900개        3           2700
+        189 99 190 100  191 0   192 0   193 1   194 0   195 1
+        10~99 범위 내 k와 차이(tmp)
+        수          k          tmp
+        (9          9           0)
+        1           10          1
+        0           11          2
+        1           12          3
+        1           13
+        1           14
+        2           15
+
+        1. 어느 범위 단계 이상까지 가는지 체크.
+        2. 어느 자연수(finalNum)에 있는지 확인. (범위 끝 수 + 1) + ((tmp-1)/범위 자연수의 자리수)
+        3. 해당 자연수가 N보다 크다면 -1 반환
+        3. 그렇지 않다면, 해당 자연수에서 몇 번째 자리인지 확인 및 추출. 자연수[(tmp-1)%범위 자연수의 자리수]
+         */
+        long finalNum = 0;
+        long tmp = k;
+        long cntLength = 1;  // cntLength * cntNum에서 int 범위에서 벗어나지 못한 숫자 존재
+        long cntNum = 9;
+        while (tmp > cntLength * cntNum) { // 0으로 하니까 이전 finalNum을 찾기 힘든 구조였음. 나올 수 있는 구조를 이렇게 바꾸는 발상 참고 필요!
+            tmp = tmp - (cntLength * cntNum); //
+            finalNum = finalNum + cntNum;
+            cntLength++; // 1, 2, 3
+            cntNum *= 10; // 9, 90, 900
+        }
+
+        finalNum = (finalNum + 1) + (tmp - 1) / cntLength;
+        if (finalNum > N) {
+            System.out.println(-1);
+        } else {
+            System.out.println(String.valueOf(finalNum).charAt((int) ((tmp - 1) % cntLength)));
+        }
+    }
+}
