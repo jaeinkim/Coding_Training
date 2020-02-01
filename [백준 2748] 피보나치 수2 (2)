@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String argv[]) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int tmp[] = {0, 1, 2};
+
+        for(int i = 2; i < N+1; i++){
+            tmp[2] = tmp[0] + tmp[1];
+            tmp[0] = tmp[1];
+            tmp[1] = tmp[2];
+        }
+
+        System.out.println(tmp[2]);
+    }
+}
