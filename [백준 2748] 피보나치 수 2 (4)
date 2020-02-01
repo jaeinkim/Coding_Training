@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main2 {
+    public static long tmp[] = new long[91];
+    public static void main(String argv[]) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        System.out.println(cal(N));
+    }
+    public static long cal(int N){
+        if(N < 2) { return N;}
+        else{
+            if(tmp[N]>0){   /* 메모이제이션을 활용한다면 연산을 줄일 수 있구나!!!*/
+                return tmp[N];
+            }
+            tmp[N] = cal(N-1) + cal(N-2);
+            return tmp[N];
+        }
+    }
+}
