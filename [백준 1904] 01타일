@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main2 {
+    public static int tmp[] = new int[1000001];
+    public static void main(String argv[]) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        System.out.println(calCase(N));;
+
+    }
+    public static int calCase(int n){
+        if(tmp[n] > 0){return tmp[n];}
+        if(n <= 2){return n;}
+        else{
+            tmp[n] = (calCase(n-2) + calCase(n-1)) % 15746;
+            return tmp[n];
+        }
+    }
+}
