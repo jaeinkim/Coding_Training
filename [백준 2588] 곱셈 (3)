@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main2 {
+    public static void main(String argv[]) {
+        Scanner sc = new Scanner(System.in);
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+
+        int C = A*B;
+        int tmp;
+        while(B !=0){
+            tmp = B%10;
+            B /= 10;
+            System.out.println(A*tmp);
+        }
+        System.out.println(C);
+
+    }
+}
