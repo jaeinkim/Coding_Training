@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+
+public class Main2 {
+    public static void main(String argv[]) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int n = Integer.valueOf(bf.readLine());
+        int a;
+        int b;
+        while(n>0){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            a = Integer.valueOf(st.nextToken());
+            b = Integer.valueOf(st.nextToken());
+            bw.write( String.valueOf(a+b)+"\n");
+            n--;
+        }
+        bw.flush();
+        bw.close();
+    }
+}
