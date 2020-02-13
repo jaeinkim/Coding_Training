@@ -1,0 +1,30 @@
+import java.io.*;
+/*
+    백준 사이트에서 BufferedReader와 System.out.println()을 섞어쓰면 안됨
+ */
+public class Main2 {
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int k;
+    static StringBuilder sb = new StringBuilder();
+    public static void main(String argv[]) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(bf.readLine());
+        hanoi(n, 1, 3, 2);
+        sb.insert(0, k);
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+
+    public static void hanoi(int n, int from, int to, int tmp)  throws IOException {
+        if(n == 1){
+            sb.append("\n" + String.valueOf(from + " ") + String.valueOf(to));
+            k++;
+            return;
+        }
+        hanoi(n-1, from, tmp, to);
+        sb.append("\n" + String.valueOf(from + " ") + String.valueOf(to));
+        k++;
+        hanoi(n-1, tmp, to, from);
+    }
+}
