@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String argv[]) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringBuilder sb  = new StringBuilder(bf.readLine());
+        char ch = 4;
+        if(sb.length() == 1){
+            sb.insert(0, 0);
+        }
+        int tmp = sb.charAt(0)-48+sb.charAt(1) -48;
+        String str = String.valueOf(sb.charAt(1) - 48) + String.valueOf(tmp%10);
+        int cnt = 1;
+        while (!str.equals(sb.toString())) {
+            tmp = str.charAt(0)-48+str.charAt(1) -48;
+            str = String.valueOf(str.charAt(1) - 48) + String.valueOf(tmp%10);
+            cnt++;
+        }
+        bw.write(String.valueOf(cnt));
+        bw.flush();
+        bw.close();
+    }
+}
+
