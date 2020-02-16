@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String argv[]) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int tmp = 0;
+        int n = 0;
+        int max = 0;
+        int max_idx = -1;
+        while(n<9){
+            tmp = Integer.valueOf(bf.readLine());
+            if (max < tmp){
+                max = tmp;
+                max_idx = n;
+            }
+            n++;
+        }
+        bw.write(String.valueOf(max) + "\n");
+        bw.write(String.valueOf(max_idx+1));
+        bw.flush();
+        bw.close();
+    }
+}
+
