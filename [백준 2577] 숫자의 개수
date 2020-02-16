@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String argv[]) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int a = Integer.valueOf(bf.readLine());
+        int b = Integer.valueOf(bf.readLine());
+        int c = Integer.valueOf(bf.readLine());
+        int mul_num = a*b*c;
+
+        char[] arr = String.valueOf(mul_num).toCharArray();
+        int[] answer = new int[10];
+        for(int i = 0; i < arr.length; i++ ){
+            answer[arr[i]-48] += 1;
+        }
+        for (int n : answer){
+
+            bw.write(String.valueOf(n) + "\n");
+        }
+
+        bw.flush();
+        bw.close();
+    }
+}
+
