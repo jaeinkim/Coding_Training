@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.StringTokenizer;
+
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.valueOf(bf.readLine());
+
+        int num;
+        int i = 0;
+        int sum = 0;
+        int tmp = 0;
+
+        while(n > 0){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            num = Integer.valueOf(st.nextToken());
+            int arr[] = new int[num];
+            while(st.hasMoreTokens()){
+                tmp = Integer.valueOf(st.nextToken());
+                arr[i++] = tmp;
+                sum += tmp;
+            }
+            double avr = sum/num;
+            double cnt = 0.0;
+            for(int j : arr){
+                if(j > avr){
+                    cnt++;
+                }
+            }
+            double result =  (cnt/num)  * 100;
+            System.out.printf("%.3f%%\n",result);
+            i = 0;
+            sum = 0;
+            n--;
+        }
+    }
+}
