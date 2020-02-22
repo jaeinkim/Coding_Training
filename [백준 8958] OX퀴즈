@@ -1,0 +1,29 @@
+import java.io.*;
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int n = Integer.valueOf(bf.readLine());
+        int oNum = 0;
+        int sum = 0;
+
+        while(n>0){
+            char[] arr= bf.readLine().toCharArray();
+            for (char ch : arr){
+                if(ch == 'O'){
+                    oNum++;
+                    sum += oNum;
+                }else{
+                    oNum = 0;
+                }
+            }
+            n--;
+            bw.write(String.valueOf(sum) + "\n");
+            oNum = 0;
+            sum = 0;
+        }
+        bw.flush();
+        bw.close();
+    }
+}
