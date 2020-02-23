@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.StringTokenizer;
+
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int n = Integer.valueOf(bf.readLine());
+        int rpt_num;
+        int tmp;
+        StringBuilder sb = new StringBuilder();
+        while(n-- > 0){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            rpt_num = Integer.valueOf(st.nextToken());
+            tmp = rpt_num;
+            char[] arr = st.nextToken().toCharArray();
+            for(int i = 0; i < arr.length; i++){
+                while(tmp-- > 0){
+                    sb.append(arr[i]);
+                }
+                tmp = rpt_num;
+            }
+            sb.append("\n");
+        }
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+    }
+}
