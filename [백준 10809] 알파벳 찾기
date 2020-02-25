@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+/*
+*/
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        //26개
+        // char a -> int로 97
+        // char z -> int로 122
+        int[] idx_arr= new int[26];
+
+        char[] arr = bf.readLine().toCharArray();
+        for(int j = 0; j < idx_arr.length; j++){
+            idx_arr[j] = -1;
+        }
+        for(int i = 0; i < arr.length; i++){
+            if(idx_arr[arr[i] - 97] == -1){idx_arr[arr[i] - 97] = i;}
+        }
+        for(int n : idx_arr){
+            bw.write(String.valueOf(n + " "));
+        }
+
+        bw.flush();
+        bw.close();
+    }
+}
