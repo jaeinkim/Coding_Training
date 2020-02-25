@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+/* (백준 1157) '가장 큰 녀석이 두 개 이상일 때는?'를 고려해야 하는 유형*/
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+//        System.out.println((int) 'A'); // 65
+//        System.out.println((int) 'Z'); // 90
+        int[] cnt_arr = new int[26];
+        char[] ch_arr = bf.readLine().toUpperCase().toCharArray();
+        int max = 0;
+        char result = '?';
+        for(int i = 0; i < ch_arr.length; i++){
+            cnt_arr[ch_arr[i]-65]++;
+            if( cnt_arr[ch_arr[i]-65] > max ){
+                max = cnt_arr[ch_arr[i]-65];
+                result = ch_arr[i];
+            }
+            else if(cnt_arr[ch_arr[i]-65] == max){
+                result = '?';
+            }
+        }
+        bw.write(result);
+        bw.flush();
+        bw.close();
+    }
+}
