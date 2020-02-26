@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+/*
+baekjoon
+a b
+1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*/
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        //26개
+        // char a -> int로 97
+        // char z -> int로 122
+        String st = bf.readLine();
+        for(int i = 97; i < 123; i++){
+            bw.write(String.valueOf(st.indexOf(i)) + " ");
+        }
+        bw.flush();
+        bw.close();
+    }
+}
