@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+/*
+*/
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        char[] ipt_arr = bf.readLine().toCharArray();
+        //A 65, Z 90
+        int arr[] = new int[26];
+        int cnt = 1;
+        int n = 3;
+        for (int i  = 0; i <arr.length; i++){
+            arr[i] = n;
+            cnt++;
+            if(i == 17){
+                continue;
+            }else if(i == 24){
+                continue;
+            }
+            if(cnt  > 3){
+                cnt = 1;
+                n++;
+            }
+        }
+        int sum = 0;
+        for(int j = 0; j <ipt_arr.length; j++){
+            sum += arr[ipt_arr[j] - 65];
+        }
+        bw.write(String.valueOf(sum));
+        bw.flush();
+        bw.close();
+    }
+}
