@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+/*
+특정 배열 원소의 패턴 설정을 if문 분기 또는 임의 설정 방식의 발상 참고
+*/
+class Main{
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        char[] arr = bf.readLine().toCharArray();
+        int sum = 0;
+        for(int i = 0; i < arr.length ; i++){
+            if(arr[i] <= 'C') {sum+= 3;}
+            else if(arr[i] <= 'F') {sum+= 4;}
+            else if(arr[i] <= 'I'){sum +=  5;}
+            else if(arr[i] <= 'L'){sum +=  6;}
+            else if(arr[i] <= 'O'){sum +=  7;}
+            else if(arr[i] <= 'S'){sum +=  8;}
+            else if(arr[i] <= 'V'){sum +=  9;}
+            else if(arr[i]<= 'Z'){sum +=  10;}
+        }
+        //A 65, Z 90
+        bw.write(String.valueOf(sum));
+        bw.flush();
+        bw.close();
+    }
+}
