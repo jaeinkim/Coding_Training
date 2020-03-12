@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+/*
+5
+55 185
+58 183
+88 186
+60 175
+46 155
+
+2 2 1 2 5
+ */
+
+    public static void main(String[] argv) throws IOException {
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.valueOf(bf.readLine());
+        /*
+        N = Integer.valu
+         */
+        int[][] arr = new int[N][2];
+        int i = 0;
+        while(N-- > 0){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            arr[i][0] = Integer.valueOf(st.nextToken());
+            arr[i][1] = Integer.valueOf(st.nextToken());
+            i++;
+        }
+
+        int weight;
+        int height;
+        int rank ;
+        for(int k = 0; k < arr.length; k++){
+            weight = arr[k][0];
+            height = arr[k][1];
+            rank = 1;
+            for(int j = 0; j < arr.length; j++ ){
+                if(j == k){
+                    continue;
+                }
+                if(weight < arr[j][0] && height < arr[j][1]){
+                    rank++;
+                }
+            }
+            bw.write(rank + " ");
+        }
+        bw.flush();
+        bw.close();
+    }
+
+}
