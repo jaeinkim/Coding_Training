@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+/*
+1. 분기의 순서
+2. tmp = 0이 아니라 tmp++ or tmp--으로 발상
+*/
+class Main{
+
+    public static Stack<Integer> stack;
+    public static int tmp;
+    public static int N ;
+    public static int M;
+    public static BufferedWriter bw;
+
+    public static void main(String[] argv) throws IOException {
+        stack  = new Stack<>();
+//        stack.push(1);
+//        stack.push(2);
+//        System.out.println(stack.toA);
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+        N = Integer.valueOf(st.nextToken());
+        M = Integer.valueOf(st.nextToken());
+        tmp = 0;
+        for (int i = 1; i <= N; i++){
+            stack.push(i);
+            tmp++;
+            pushStack(i+1);
+            stack.pop();
+            tmp--;
+        }
+        bw.flush();
+        bw.close();
+    }
+    public static void pushStack(int start) throws IOException {
+        if(tmp == M){
+            for(int k : stack){
+                bw.write(k + " ");
+            }
+            bw.write("\n");
+            return;
+        }
+        else if(start > N){
+            return;
+        }
+
+        for (int j = start; j <= N; j++){
+            stack.push(j);
+            tmp++;
+            pushStack(j+1);
+            stack.pop();
+            tmp--;
+        }
+    }
+
+}
