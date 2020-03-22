@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+/*
+1. 분기의 순서를 유의할 것.
+  E.G., A 분기점에서 나와야 할 것이 B 분기점이 먼저 위치하여 A 분기점의 로직이 안나옴
+        A: if(tmp == M) / B: (start > N)
+2. 백트랙, 스택 등 노드 이동 단계 별 depth 또는 cnt를 가감 방식으로 발상할 것
+    AS-IS: 초기화 방식. tmp = 0
+    TO-BE: 가감 방식. tmp-- or tmp++
+3. 나의 풀이: Stack 방식 / 다른 풀이: DFS 방식
+*/
+class Main{
+
+    public static int N ;
+    public static boolean[] visited;
+    public static int M;
+    public static BufferedWriter bw;
+
+    public static void main(String[] argv) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+        N = Integer.valueOf(st.nextToken());
+        M = Integer.valueOf(st.nextToken());
+        visited = new boolean[N];
+        DFS(0, 0);
+        bw.flush();
+        bw.close();
+    }
+    public static void DFS(int idx, int depth) throws IOException {
+        if(depth == M){
+            for(int j = 0; j < N; j++){
+                if(visited[j] == true){
+                    bw.write(String.valueOf(j+1) + " ");
+                }
+            }
+            bw.write("\n");
+            return;
+        }
+        for(int i = idx; i < N; i++){
+            visited[i] = true;
+            DFS(i + 1, depth +1 );
+            visited[i] = false;
+        }
+    }
+
+}
