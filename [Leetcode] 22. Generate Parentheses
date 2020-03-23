@@ -1,0 +1,30 @@
+
+import java.util.*;
+public class Solution {
+    // 진행 패턴: 열린 괄호 갯수 >= 닫는 괄호 갯수
+    /***
+     * 상황에 따라 if와 else if 그리고 if와 if로 나누어질 수 있음
+     *   MECE 방식: if, else if, else / 모든 경우 체크: if와 if
+     *
+     */
+    public List<String> generateParenthesis(int n){
+        List<String> al = new ArrayList<>();
+
+        process(n, "", 0, 0, al); //recurse
+        return al;
+    }
+    public void process(int n, String str, int open_cnt, int closed_cnt, List al){
+        //termination check
+        if(open_cnt == n && closed_cnt == n){
+            al.add(str);
+            return;
+        }
+        //recurse next
+        if(open_cnt < n){
+            process(n, str+"(", open_cnt +1, closed_cnt, al);
+        }
+        if(open_cnt > closed_cnt ){
+            process(n, str+")", open_cnt, closed_cnt + 1, al);
+        }
+    }
+}
