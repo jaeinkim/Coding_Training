@@ -1,0 +1,26 @@
+def solution(a, b):
+    answer = 0
+    #max와 min을 구한후
+    mx = max(a,b)
+    mn = min(a,b)
+    
+    if mx != mn:
+        
+        answer = cal(mx) - cal(mn) + mn
+    else: 
+        answer = mx
+    #max와 min이 같지 않다면
+        #answer = 
+    #max와 min이 같다면 그대로 
+    return answer
+
+def cal(a):
+    answer = 0
+    if a >= 0:
+        print("a>=0: " + str(a))
+        answer = (a*(a+1))/2
+    else:
+        print("a<0: " + str(a))
+        answer =  (a*(a+1))/2
+    print(answer)
+    return answer
