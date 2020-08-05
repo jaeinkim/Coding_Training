@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Solution {
+    public static void main(String argv[]) {
+
+        Solution sl = new Solution();
+        sl.solution(new int[]{4, 3, 2, 1});
+    }
+
+    public int[] solution(int[] arr) {
+        if (arr.length == 1) {
+            return new int[]{-1};
+        }
+        Collections.min()
+        int min = Integer.MAX_VALUE;
+        int min_idx = -1;
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i] < min){
+                min = arr[i];
+                min_idx = i;
+            }
+        }
+        int[] new_arr = new int[arr.length-1];
+        int k = 0;
+        for(int j = 0; j < arr.length; j++){
+            if(j == min_idx) continue;
+            new_arr[k++] = arr[j];
+        }
+
+        return new_arr;
+    }
+}
