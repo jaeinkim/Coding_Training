@@ -7,3 +7,5 @@ def solution(my_string):
 
     print(set(my_string))
     return answer
+
+#테스트
