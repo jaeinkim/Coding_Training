@@ -1,31 +1,33 @@
-# 메모리 문제가 있을 수 있는 코드
-# M, N = map(int, input().split())
-# res = [[0]*N for _ in range(M)]
-# x, y = 0, 0
-# dx = [1, 0, -1, 0]
-# dy = [0, 1, 0, -1]
-# cnt = 1
-# angle = 0
-#
-# while cnt < M*N:
-#     res[y][x] = 1
-#     ny = y + dy[angle]
-#     nx = x + dx[angle]
-#     cnt+=1
-#     if 0 <= nx < N and 0<= ny < M and res[ny][nx] == 0:
-#         x, y = nx, ny
-#     else:
-#         angle = (angle+1)%4
-#         y += dy[angle]
-#         x += dx[angle]
-#
-# print(y+1, x+1)
+########################################
+# 1. 메모리 문제가 있을 수 있는 코드
+########################################
+M, N = map(int, input().split())
+res = [[0]*N for _ in range(M)]
+x, y = 0, 0
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+cnt = 1
+angle = 0
+
+while cnt < M*N:
+    res[y][x] = 1
+    ny = y + dy[angle]
+    nx = x + dx[angle]
+    cnt+=1
+    if 0 <= nx < N and 0<= ny < M and res[ny][nx] == 0:
+        x, y = nx, ny
+    else:
+        angle = (angle+1)%4
+        y += dy[angle]
+        x += dx[angle]
+
+print(y+1, x+1)
 
 
 
-####################
-# 완전 탐색 방법
-####################
+########################################
+# 2. 완전 탐색 방법
+########################################
 import sys
 M, N = map(int, sys.stdin.readline().split())
 
@@ -62,3 +64,28 @@ for i in range(1, (M*N)):
             iter += 1
             y = ny
 print(y, x)
+
+
+########################################
+# 3. 수학적 방법
+########################################
+import sys
+M, N = map(int, sys.stdin.readline().split())
+
+if M == N:
+    if M%2 == 1 and N%2 ==1:
+        print((M//2)+1, (N//2)+1)
+    elif M%2 == 0 and N%2 ==0:
+        print((M//2)+1, (N//2))
+
+elif M > N:
+    if N%2 == 0:
+        print((N//2)+1, (N//2))
+    elif N%2 == 1:
+        print((N//2)+1+(M-N), (N//2)+1)
+
+elif M < N:
+    if M%2 == 0:
+        print((M//2)+1, (M//2))
+    elif M%2 == 1:
+        print((M//2)+1, (M//2)+1+(N-M))
