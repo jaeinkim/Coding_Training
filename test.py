@@ -1,16 +1,47 @@
-import random
+# import sys
+# input = sys.stdin.readline
+#
+# num = int(input())
+#
+# def gcd(n, m):
+#     k = n%m
+#     if k == 0:
+#         return m
+#     return gcd(m, k)
+#
+# for i in range(num):
+#     n, m = map(int, input().split())
+#     print(n*m/gcd(n,m))
+graph = {
+    1: [2, 3, 4],
+    2: [5],
+    3: [5],
+    4: [],
+    5: [6, 7],
+    6: [],
+    7: [3]
+}
+# def recursive_dfs(v, discovered=[]):
+#     discovered.append(v)
+#     for w in graph[v]:
+#         if w not in discovered:
+#             discovered = recursive_dfs(w, discovered)
+#     print(discovered)
+#     return discovered
+#
+# print(f'recursive_dfs result = {recursive_dfs(1)}')
 
-testcase = int(input())
-answer = 0
-A = [0]*(100001)
 
-for i in range(0, 10001):
-    A[i] = random.randrange(1, 101)
+def iterative_dfs(start_v):
+    discovered = []
+    stack = [start_v]
+    while stack:
+        v = stack.pop()
+        if v not in discovered:
+            discovered.append(v)
+            for w in graph[v]:
+                stack.append(w)
+        print(discovered)
+    return discovered
 
-for t in range(1, testcase+1):
-    start, end = map(int, input().split())
-
-    for i in range(start, end+1):
-        answer = answer + A[i]
-
-    print(str(testcase) + " " +str(answer/2))
+print(f'iterative_dfs result = {iterative_dfs(1)}')

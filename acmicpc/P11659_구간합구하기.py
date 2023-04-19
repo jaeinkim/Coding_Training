@@ -31,3 +31,5 @@ for i in numbers:
 for i in range(quizNo):
     s, e = map(int, input().split())
     print(prefix_sum[e] - prefix_sum[s-1])
+
+
