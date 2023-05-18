@@ -45,3 +45,28 @@ def iterative_dfs(start_v):
     return discovered
 
 print(f'iterative_dfs result = {iterative_dfs(1)}')
+
+
+
+
+
+
+# 상향식 접근법 (타뷸레이션)
+def fib(n):
+    dp[0] = 0
+    dp[1] = 1
+
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i -2]
+    return dp[n]
+
+
+# 하향식 접근법 (메모이제이션)
+def fib(n):
+    if n <= 1:
+        return n
+
+    if dp[n]:
+        return dp[n]
+    dp[n] = fib(n-1) + fib(n-2)
+    return dp[n]
