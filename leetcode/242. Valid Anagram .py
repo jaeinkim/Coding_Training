@@ -31,3 +31,5 @@ class Solution:
             countT[t[i]] = countT.get(t[i], 0) + 1
 
         return countS == countT
+
+# 4. 정렬방식도 사용할 수 있음 단, 시간복잡도가 더 나빠질 수 있음
