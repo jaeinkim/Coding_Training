@@ -19,4 +19,15 @@ class Solution:
         print(hm_s, hm_t)
         return hm_s == hm_t
 
+# 3. neetcode가 푼 방식
 
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t): return False
+        countS, countT = {}, {}
+
+        for c in s:
+            countS[c] = countS.get(c, 0) + 1
+        for c in t:
+            countT[c] = countT.get(c, 0) + 1
+        return countS == countT
