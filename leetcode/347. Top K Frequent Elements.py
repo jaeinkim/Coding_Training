@@ -39,6 +39,52 @@ class Solution:
                 return answer
 
 
+# 복기해서 푼 것
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count_lst = [[] for _ in range(len(nums)+1)]
+        hm = {}
+
+        for n in nums:
+            hm[n] = hm.get(n, 0) + 1
+
+        for K, V in hm.items():
+            count_lst[V].append(K)
+        answer = []
+        print(count_lst)
+        for i in range(len(count_lst)-1, 0, -1):
+            if len(count_lst[i]) != 0:
+                answer = answer + count_lst[i]
+                k -= len(count_lst[i])
+
+            if k == 0:
+                return answer
+# 23/9/19 재풀이
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hm = {}
+        cnt_lst = [[] for _ in range(len(nums)+1)]
+        answer = []
+        for n in nums:
+            hm[n] = hm.get(n, 0) + 1
+        for K, V in hm.items():
+            cnt_lst[V].append(K)
+        print(cnt_lst)
+        for i in range(len(cnt_lst)-1, -1, -1):
+            if k == 0:
+                return answer
+            if len(cnt_lst[i]) == 0:
+                continue
+            answer = answer + cnt_lst[i]
+            k -= len(cnt_lst[i])
+
+
+
+
+
+
+
+
 
 
 
