@@ -78,9 +78,43 @@ class Solution:
             answer = answer + cnt_lst[i]
             k -= len(cnt_lst[i])
 
+#9/20 수. 재풀이
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        hm = {}
+        cnt_lst = [[] for _ in range(len(nums)+1)]
+        answer = []
+
+        for n in nums:
+            hm[n] = hm.get(n, 0) + 1
+
+        for K, V in hm.items():
+            cnt_lst[V].append(K)
+
+        for i in range(len(cnt_lst)-1, 0, -1):
+            answer = answer + cnt_lst[i]
+            if k == len(answer):
+                return answer
 
 
 
+# 9/20 정답 풀이
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums)+1)]
+
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+        for n, c in count.items():
+            freq[c].append(n)
+
+        res = []
+        for i in range(len(freq)-1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
 
 
 
