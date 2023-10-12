@@ -27,7 +27,7 @@ class Solution:
         for n in nums:
             hm[n] = hm.get(n, 0) + 1
 
-        for K, V in hm.items():
+        for K, V in hm.items(): # 소문자 k로 하면 해당 포문 값으로 덮어 씌워짐
             lst[V].append(K)
 
         answer = []
@@ -73,7 +73,7 @@ class Solution:
         for i in range(len(cnt_lst)-1, -1, -1):
             if k == 0:
                 return answer
-            if len(cnt_lst[i]) == 0:
+            if len(cnt_lst[i]) == 0: # if cnt_lst is None은 안됨
                 continue
             answer = answer + cnt_lst[i]
             k -= len(cnt_lst[i])
