@@ -12,7 +12,7 @@ class Solution:
                 stack.append(c)
         return True if not stack else False
 
-# 24.1.3 수. 복기로 품
+# 24.1.3 수. 복기로 품. 어렵게 풀었네....
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = list()
@@ -27,5 +27,23 @@ class Solution:
                     # print(f'stack ={stack}')
                 else:
                     return False
+        return True if len(stack) == 0 else False
+
+
+
+# 24.1.4 목. 복기로 품
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = list()
+        map = {')': '(', ']': '[', '}': '{'}
+
+        for c in s:
+            if stack and c in map:
+                if map[c] == stack[-1]:
+                    stack.pop()
+                else:
+                    stack.append(c)
+            else:
+                stack.append(c)
         return True if len(stack) == 0 else False
 
